@@ -1,13 +1,45 @@
 sudo apt-get update
 sudo apt-get install python
+sudo apt-get install python-dev
 sudo apt-get install git
 sudo apt-get install vim
 mkdir git
 cd git
 git init
-git config --global user.email reuven.sa@gmail.com
-git config --global user.name Reuven Sayag
 git clone https://github.com/Reuvens/cloud-server-skeleton.git
-cd /home/reuven_sa
-cp /home/reuven_sa/git/cloud-server-skeleton/.bashrc .
-cp /home/reuven_sa/git/cloud-server-skeleton/.vimrc .
+cd ~
+cp ~/git/cloud-server-skeleton/.bashrc .
+cp ~/git/cloud-server-skeleton/.vimrc .
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# in vim run
+# :PluginInstall
+mkdir .vim/colors
+cp ~/git/cloud-server-skeleton/.vim/colors/javipolo.vim ~/.vim/colors/
+
+# install YouCompleteMe
+sudo apt install build-essential cmake python3-dev
+cd /home/reuven_sa/.vim/bundle/YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer
+cd ~
+
+# if YouCompleteMe fails to install (get stuck) it's probably due to OOM, follow the instructions at:
+# https://linuxize.com/post/create-a-linux-swap-file/
+#
+# sudo fallocate -l 1G /swapfile
+# sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+# sudo chmod 600 /swapfile
+# sudo mkswap /swapfile
+# sudo swapon /swapfile
+# Add to: 
+# -- /etc/fstab
+# The following:
+# -- /swapfile swap swap defaults 0 0
+# sudo swapon --show
+#
+# Then rerun:
+# cd /home/reuven_sa/.vim/bundle/YouCompleteMe
+# cd ~/.vim/bundle/YouCompleteMe
+# ./install.py --clang-completer
+# cd ~
+
