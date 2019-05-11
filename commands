@@ -1,0 +1,13 @@
+sudo apt-get update
+sudo apt-get install python
+sudo apt-get install git
+sudo apt-get install vim
+mkdir git
+cd git
+git init
+git config --global user.email reuven.sa@gmail.com
+git config --global user.name Reuven Sayag
+git clone https://github.com/Reuvens/cloud-server-skeleton.git
+cd /home/reuven_sa
+cp /home/reuven_sa/git/cloud-server-skeleton/.bashrc .
+cp /home/reuven_sa/git/cloud-server-skeleton/.vimrc .
