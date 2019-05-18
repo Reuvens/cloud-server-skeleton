@@ -73,12 +73,16 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
+" Set tab size to 2 
+set tabstop=2
+set shiftwidth=0
+
 " Python indent
 " =============
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
-    \ set shiftwidth=4 |
+    \ set shiftwidth=0 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix
@@ -87,6 +91,9 @@ au BufNewFile,BufRead *.py
 " ===============
 :highlight BadWhitespace ctermfg=16 ctermbg=253 guifg=#000000 guibg=#F8F8F0
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"set defualt text color as light blue in txt files
+au BufRead,BufNewFile *.txt highlight Normal ctermfg=11
 
 "python with virtualenv support
 py3 << EOF
@@ -104,4 +111,12 @@ nnoremap <buffer> <F9> :exec '!python3' shellescape(@%, 1)<cr>
 
 let python_highlight_all=1
 syntax on
+
+
+" map \o and \O to add new line above / below without moving to insert mode and without moving the cursor
+nnoremap <Leader>o o<Esc>k 
+nnoremap <Leader>O O<Esc> 
+
+" notes syntax
+au BufRead,BufNewFile *.notes,*.note source .vim/syntax/notes-syntax.vim
 
